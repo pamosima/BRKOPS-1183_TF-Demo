@@ -14,9 +14,12 @@ Building and managing Cisco SD-Access fabric doesn't have to be challenging or c
 
 ## Features
 ---
+### Demo 1
+* Create Site 
 
+### Demo 2
 * Configure General Settings
-* Configure Site 
+* Create Site 
 * Onboard FiAB (PnP)
 * Create Fabric Site
 * Deploy TE agent on FiAB
