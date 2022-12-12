@@ -29,7 +29,7 @@ resource "dnacenter_pnp_device" "device" {
     }
   }
   lifecycle {
-    ignore_changes = [ item ]
+    ignore_changes = [ parameters ]
   }
 }
 

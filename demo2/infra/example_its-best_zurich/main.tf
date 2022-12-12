@@ -77,23 +77,24 @@ module "m1" {
   vn_guest_virtual_network_name = var.vn_guest_virtual_network_name
 }
 
-# module "m2" {
-#   # Using m2 module
-#   depends_on = [ module.m1 ]
-#   source = "../../modules/m2"
+module "m2" {
+  # Using m2 module
+  depends_on = [ module.m1 ]
+  source = "../../modules/m2"
 
-#   area_name = var.area_name  
-#   area_parent_name = var.area_parent_name
-#   subarea_name = var.subarea_name
-#   building_name = var.building_name
+  area_name = var.area_name  
+  area_parent_name = var.area_parent_name
+  subarea_name = var.subarea_name
+  building_name = var.building_name
 
-#   device_hostname = var.device_hostname
-#   external_as_number = var.external_as_number
-#   internal_as_number = var.internal_as_number
+  device_hostname = var.device_hostname
+  device_management_ip_address = var.device_management_ip_address
+  external_as_number = var.external_as_number
+  internal_as_number = var.internal_as_number
 
-#   vn_campus_virtual_network_name = var.vn_campus_virtual_network_name
-#   vn_guest_virtual_network_name = var.vn_guest_virtual_network_name
-# }
+  vn_campus_virtual_network_name = var.vn_campus_virtual_network_name
+  vn_guest_virtual_network_name = var.vn_guest_virtual_network_name
+}
 
 # module "m3" {
 #   # Using m3 module

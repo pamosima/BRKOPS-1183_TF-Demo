@@ -14,9 +14,8 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
-variable "device_hostname" {}
 
-
+variable "device_management_ip_address" {}
 
 variable "timeout" {
   type        = number

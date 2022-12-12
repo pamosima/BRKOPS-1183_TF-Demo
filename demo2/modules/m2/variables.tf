@@ -21,6 +21,7 @@ variable "subarea_name" {}
 variable "building_name" {}
 
 variable "device_hostname" {}
+variable "device_management_ip_address" {}
 
 variable "vn_campus_virtual_network_name" {}
 variable "vn_guest_virtual_network_name" {}

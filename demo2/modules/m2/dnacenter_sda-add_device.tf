@@ -13,23 +13,18 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
+resource "time_static" "activation_date" {}
+
 data "dnacenter_sda_fabric_site" "default" {
   provider            = dnacenter
   site_name_hierarchy = "${var.area_parent_name}/${var.area_name}/${var.subarea_name}"
-}
-
-data "dnacenter_device_details" "fiab-1" {
-  provider   = dnacenter
-  identifier = "nwDeviceName"
-  search_by  = "${var.device_hostname}.dna.cisco.com"
-  timestamp = 1667833680000
 }
 
 resource "dnacenter_sda_provision_device" "fiab-1" {
   provider = dnacenter
   parameters {
 
-    device_management_ip_address = data.dnacenter_device_details.fiab-1.item.0.management_ip_addr
+    device_management_ip_address = var.device_management_ip_address
     site_name_hierarchy          = "${var.area_parent_name}/${var.area_name}/${var.subarea_name}/${var.building_name}"
   }
 }
@@ -52,7 +47,7 @@ resource "dnacenter_sda_fabric_border_device" "fiab-1" {
   depends_on = [ dnacenter_sda_provision_device.fiab-1, dnacenter_transit_peer_network.ip-transit ]
   parameters {
     payload {
-      device_management_ip_address       = data.dnacenter_device_details.fiab-1.item.0.management_ip_addr
+      device_management_ip_address       = var.device_management_ip_address
       device_role                        = ["Border_Node", "Control_Plane_Node", "Edge_Node"]
       border_session_type                = "EXTERNAL"
       border_with_external_connectivity  = "true"

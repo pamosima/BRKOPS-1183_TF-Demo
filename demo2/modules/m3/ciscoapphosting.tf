@@ -13,15 +13,8 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
-data "dnacenter_device_details" "fiab-1" {
-  provider   = dnacenter
-  identifier = "nwDeviceName"
-  search_by  = "${var.device_hostname}.dna.cisco.com"
-  timestamp = 1667833680000
-}
-
 resource "ciscoapphosting_iox" "iox" {
-  host                 = data.dnacenter_device_details.fiab-1.item.0.management_ip_addr
+  host                 = var.device_management_ip_address
   enable               = true
 }
 
