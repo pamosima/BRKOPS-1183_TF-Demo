@@ -73,6 +73,10 @@ resource "dnacenter_pnp_device_site_claim" "device" {
         key   = "HOSTNAME"
         value = var.device_hostname
       }
+      config_parameters {
+        key   = "MANAGEMENT_IP_ADDRESS"
+        value = var.device_management_ip_address
+      }
     }
   }
 }

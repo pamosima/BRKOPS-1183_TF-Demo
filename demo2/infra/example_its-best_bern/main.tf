@@ -70,6 +70,7 @@ module "m1" {
   device_hostname = var.device_hostname
   device_pid = var.device_pid
   device_serial_number = var.device_serial_number
+  device_management_ip_address = var.device_management_ip_address
 
   authenticate_template_name = "Closed Authentication"
 
@@ -88,6 +89,7 @@ module "m1" {
 #   building_name = var.building_name
 
 #   device_hostname = var.device_hostname
+#   device_management_ip_address = var.device_management_ip_address
 #   external_as_number = var.external_as_number
 #   internal_as_number = var.internal_as_number
 
@@ -99,13 +101,6 @@ module "m1" {
 #   # Using m3 module
 #   depends_on = [ module.m2 ]
 #   source = "../../modules/m3"
-
-#   area_name = var.area_name  
-#   area_parent_name = var.area_parent_name
-#   subarea_name = var.subarea_name
-#   building_name = var.building_name
-
-#   vn_campus_virtual_network_name = var.vn_campus_virtual_network_name
 
 #   device_hostname = var.device_hostname
 

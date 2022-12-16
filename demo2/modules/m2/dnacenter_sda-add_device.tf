@@ -13,8 +13,6 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
-resource "time_static" "activation_date" {}
-
 data "dnacenter_sda_fabric_site" "default" {
   provider            = dnacenter
   site_name_hierarchy = "${var.area_parent_name}/${var.area_name}/${var.subarea_name}"

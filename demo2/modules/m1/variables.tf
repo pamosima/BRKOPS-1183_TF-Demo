@@ -45,6 +45,7 @@ variable "device_name" {}
 variable "device_hostname" {}
 variable "device_pid" {}
 variable "device_serial_number" {}
+variable "device_management_ip_address" {}
 
 variable "authenticate_template_name" {}
 

@@ -20,9 +20,5 @@ terraform {
       source = "cisco-en-programmability/dnacenter"
       version = ">= 1.0.12-beta"
     }
-    time = {
-      source  = "hashicorp/time"
-      version = ">= 0.8.0"
-    }
   }
 }

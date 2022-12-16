@@ -63,6 +63,11 @@ variable "device_hostname" {
   default = "be-fiab-1"
 }
 
+variable "device_management_ip_address" {
+  type = string
+  default = "10.120.1.1"
+}
+
 variable "device_pid" {
   type = string
   default = "C9300-24P"
