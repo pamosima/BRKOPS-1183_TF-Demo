@@ -13,26 +13,6 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
-resource "dnacenter_pnp_device" "device" {
-  provider = dnacenter
-  parameters {
-
-    device_info {
-
-      name        = var.device_name
-      hostname = var.device_hostname
-      pid         = var.device_pid
-      serial_number    = var.device_serial_number
-      location {
-        site_id   = dnacenter_site.building.item.0.id
-      }
-    }
-  }
-  lifecycle {
-    ignore_changes = [ parameters ]
-  }
-}
-
 
 data "dnacenter_configuration_template" "pnp_template" {
   provider       = dnacenter
@@ -42,13 +22,11 @@ data "dnacenter_configuration_template" "pnp_template" {
 }
 
 data "dnacenter_pnp_device" "device" {
-  depends_on = [ dnacenter_pnp_device.device ]
   provider           = dnacenter
-  hostname    = var.device_hostname
+  serial_number    = [ var.device_serial_number ]
 }
 
 resource "dnacenter_pnp_device_site_claim" "device" {
-  depends_on = [ dnacenter_pnp_device.device ]
   provider = dnacenter
   parameters {
     device_id = data.dnacenter_pnp_device.device.items.0.id
