@@ -34,25 +34,17 @@ resource "dnacenter_pnp_device" "device" {
 }
 
 
-
 data "dnacenter_configuration_template" "pnp_template" {
   provider       = dnacenter
   latest_version = "false"
-  tags           = var.pnp_template_tags
+  software_version = "17.6.1"
+  un_committed     = "true"
 }
 
 data "dnacenter_pnp_device" "device" {
   depends_on = [ dnacenter_pnp_device.device ]
   provider           = dnacenter
   hostname    = var.device_hostname
-}
-
-data "dnacenter_swim_image_details" "device" {
-  provider                = dnacenter
-  is_tagged_golden        = "true"
-  # name = "cat9k_iosxe.17.08.01.SPA.bin"
-  family = "CAT9K"
-  limit                   = 1
 }
 
 resource "dnacenter_pnp_device_site_claim" "device" {
@@ -63,10 +55,6 @@ resource "dnacenter_pnp_device_site_claim" "device" {
     site_id   = dnacenter_site.building.item.0.id
     hostname  = var.device_hostname
     type      = "Default"
-    image_info {
-      image_id = data.dnacenter_swim_image_details.device.items.0.image_uuid
-      skip     = "true"
-    }
     config_info {
       config_id = data.dnacenter_configuration_template.pnp_template.items.0.template_id
       config_parameters {
