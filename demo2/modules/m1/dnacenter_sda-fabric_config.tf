@@ -65,7 +65,7 @@ resource "dnacenter_sda_virtual_network" "vn_campus" {
 
 resource "dnacenter_sda_virtual_network" "vn_guest" {
   provider = dnacenter
-  depends_on = [ dnacenter_sda_fabric_authentication_profile.default, dnacenter_sda_virtual_network.vn_campus ]
+  depends_on = [ dnacenter_sda_fabric_authentication_profile.default, dnacenter_sda_virtual_network.infra_vn, dnacenter_sda_virtual_network.vn_campus ]
   parameters {
     payload {
       site_name_hierarchy  = data.dnacenter_sda_fabric_site.default.item.0.site_name_hierarchy
@@ -76,7 +76,7 @@ resource "dnacenter_sda_virtual_network" "vn_guest" {
 
 resource "dnacenter_sda_virtual_network_ip_pool" "ap-pool" {
   provider = dnacenter
-  depends_on = [ dnacenter_sda_virtual_network.infra_vn ]
+  depends_on = [ dnacenter_sda_virtual_network.infra_vn, dnacenter_sda_virtual_network.vn_campus, dnacenter_sda_virtual_network.vn_guest ]
   parameters {
 
     auto_generate_vlan_name  = "false"
@@ -98,7 +98,7 @@ resource "dnacenter_sda_virtual_network_ip_pool" "ap-pool" {
 
 resource "dnacenter_sda_virtual_network_ip_pool" "campus-pool" {
   provider = dnacenter
-  depends_on = [ dnacenter_sda_virtual_network.vn_campus ]
+  depends_on = [ dnacenter_sda_virtual_network.infra_vn, dnacenter_sda_virtual_network.vn_campus, dnacenter_sda_virtual_network.vn_guest, dnacenter_sda_virtual_network_ip_pool.ap-pool ]
   parameters {
 
     auto_generate_vlan_name  = "false"
@@ -119,7 +119,7 @@ resource "dnacenter_sda_virtual_network_ip_pool" "campus-pool" {
 
 resource "dnacenter_sda_virtual_network_ip_pool" "guest-pool" {
   provider = dnacenter
-  depends_on = [ dnacenter_sda_virtual_network.vn_guest, dnacenter_sda_virtual_network_ip_pool.campus-pool ]
+  depends_on = [ dnacenter_sda_virtual_network.infra_vn, dnacenter_sda_virtual_network.vn_campus, dnacenter_sda_virtual_network.vn_guest, dnacenter_sda_virtual_network_ip_pool.ap-pool, dnacenter_sda_virtual_network_ip_pool.campus-pool ]
   parameters {
 
     auto_generate_vlan_name  = "false"
