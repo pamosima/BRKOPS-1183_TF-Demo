@@ -68,6 +68,7 @@ module "m1" {
   pnp_template_tags = ["${var.area_name}"]
   device_name = var.device_hostname
   device_hostname = var.device_hostname
+  device_management_ip_address = var.device_management_ip_address
   device_pid = var.device_pid
   device_serial_number = var.device_serial_number
 
