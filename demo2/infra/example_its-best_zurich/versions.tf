@@ -2,7 +2,7 @@ terraform {
   required_providers {
     dnacenter = {
       source = "cisco-en-programmability/dnacenter"
-      version = "1.0.14-beta"
+      version = "1.0.16-beta"
     }
     ciscoapphosting = {
       source  = "robertcsapo/ciscoapphosting"
