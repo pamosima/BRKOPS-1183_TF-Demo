@@ -80,12 +80,12 @@ variable "device_serial_number" {
 
 variable  "external_as_number" { 
   type = number
-  default = "65535"
+  default = "65533"
 }
 
 variable  "internal_as_number" { 
   type = number
-  default = "65534"
+  default = "65532"
 }
 
 variable "ios_xe_username" {
