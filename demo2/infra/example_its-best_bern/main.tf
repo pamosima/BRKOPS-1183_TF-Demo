@@ -36,9 +36,9 @@ provider "thousandeyes" {
   token = var.te_token
 }
 
-module "m1" {
-  # Using m2 module
-  source = "../../modules/m1"
+module "m1_site_settings" {
+  # Using m1_site_settings module to configure site settings
+  source = "../../modules/m1_site_settings"
 
   area_name = var.area_name  
   area_parent_name = var.area_parent_name
@@ -54,6 +54,8 @@ module "m1" {
   
   ap-pool_ipv4_subnet = "${var.ip_pool_prefix}255.0"
   ap-pool_ipv4_gate_way = "${var.ip_pool_prefix}255.1"
+  ex-pool_ipv4_subnet = "${var.ip_pool_prefix}255.128"
+  ex-pool_ipv4_gate_way = "${var.ip_pool_prefix}255.129"
   guest-pool_ipv4_subnet = "${var.ip_pool_prefix}120.0"
   guest-pool_ipv4_gate_way = "${var.ip_pool_prefix}120.1"
   campus-pool_ipv4_subnet = "${var.ip_pool_prefix}100.0"
@@ -68,9 +70,9 @@ module "m1" {
   pnp_template_tags = ["${var.area_name}"]
   device_name = var.device_hostname
   device_hostname = var.device_hostname
+  device_management_ip_address = var.device_management_ip_address
   device_pid = var.device_pid
   device_serial_number = var.device_serial_number
-  device_management_ip_address = var.device_management_ip_address
 
   authenticate_template_name = "Closed Authentication"
 
@@ -78,10 +80,10 @@ module "m1" {
   vn_guest_virtual_network_name = var.vn_guest_virtual_network_name
 }
 
-# module "m2" {
-#   # Using m2 module
-#   depends_on = [ module.m1 ]
-#   source = "../../modules/m2"
+# module "m2_provision" {
+#   # Using m2_provision module to provision FiAB
+#   depends_on = [ module.m1_site_settings ]
+#   source = "../../modules/m2_provision"
 
 #   area_name = var.area_name  
 #   area_parent_name = var.area_parent_name
@@ -97,12 +99,12 @@ module "m1" {
 #   vn_guest_virtual_network_name = var.vn_guest_virtual_network_name
 # }
 
-# module "m3" {
-#   # Using m3 module
-#   depends_on = [ module.m2 ]
-#   source = "../../modules/m3"
+# module "m3_testing" {
+#   # Using m3_testing module to deploy TE-Agent
+#   depends_on = [ module.m2_provisioning ]
+#   source = "../../modules/m3_testing"
 
-#   device_hostname = var.device_hostname
+#   device_management_ip_address = var.device_management_ip_address
 
 #   te_agent_token = var.te_agent_token
 #   te_token = var.te_token
