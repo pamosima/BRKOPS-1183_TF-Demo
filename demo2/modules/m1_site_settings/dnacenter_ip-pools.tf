@@ -122,3 +122,22 @@ resource "dnacenter_reserve_ip_subpool" "ap-pool" {
     type               = "Generic"
   }
 }
+
+resource "dnacenter_reserve_ip_subpool" "ex-pool" {
+  depends_on = [ dnacenter_global_pool.default ]
+  provider = dnacenter
+  parameters {
+
+    ipv4_dhcp_servers  = var.ipv4_dhcp_servers
+    ipv4_dns_servers   = var.ipv4_dns_servers
+    ipv4_gate_way      = var.ex-pool_ipv4_gate_way
+    ipv4_global_pool   = var.global_ip_pool_cidr
+    ipv4_prefix        = "true"
+    ipv4_prefix_length = 25
+    ipv4_subnet        = var.ex-pool_ipv4_subnet
+    ipv6_address_space = "false"
+    name               = "${var.subarea_name}-EX-Pool"
+    site_id            = dnacenter_site.subarea.item.0.id
+    type               = "Generic"
+  }
+}

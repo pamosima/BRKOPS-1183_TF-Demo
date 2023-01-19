@@ -22,7 +22,7 @@ resource "ciscoapphosting_app" "thousandeyes" {
   depends_on = [
     ciscoapphosting_iox.iox
   ]
-  host                 = data.dnacenter_device_details.fiab-1.item.0.management_ip_addr
+  host                 = var.device_management_ip_address
   name                 = "thousandeyes"
   image                = "http://192.168.99.103/thousandeyes-enterprise-agent-4.2.2.cisco.tar"
   app_gigabit_ethernet = "1/0/1"

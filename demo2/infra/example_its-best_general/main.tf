@@ -25,9 +25,9 @@ provider "dnacenter" {
     ssl_verify = "false"
 }
 
-module "m0" {
-  # Using m0 module
-  source = "../../modules/m0"
+module "m0_general_settings" {
+  # Using m0_general_settings module to configure general settings
+  source = "../../modules/m0_general_settings"
 
   area_name = var.area_name  
   area_parent_name = var.area_parent_name

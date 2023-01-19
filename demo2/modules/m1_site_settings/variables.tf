@@ -29,6 +29,8 @@ variable "floor_rf_model" {}
 variable "global_ip_pool_cidr" {}
 variable "ap-pool_ipv4_subnet" {}
 variable "ap-pool_ipv4_gate_way" {}
+variable "ex-pool_ipv4_subnet" {}
+variable "ex-pool_ipv4_gate_way" {}
 variable "campus-pool_ipv4_subnet" {}
 variable "campus-pool_ipv4_gate_way" {}
 variable "guest-pool_ipv4_subnet" {}
