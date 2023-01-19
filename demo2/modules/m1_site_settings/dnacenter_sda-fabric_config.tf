@@ -96,9 +96,31 @@ resource "dnacenter_sda_virtual_network_ip_pool" "ap-pool" {
   }
 }
 
-resource "dnacenter_sda_virtual_network_ip_pool" "campus-pool" {
+resource "dnacenter_sda_virtual_network_ip_pool" "ex-pool" {
   provider = dnacenter
   depends_on = [ dnacenter_sda_virtual_network.infra_vn, dnacenter_sda_virtual_network.vn_campus, dnacenter_sda_virtual_network.vn_guest, dnacenter_sda_virtual_network_ip_pool.ap-pool ]
+  parameters {
+
+    auto_generate_vlan_name  = "false"
+    ip_pool_name             = "${var.subarea_name}-EX-Pool"
+    is_common_pool           = "false"
+    is_ip_directed_broadcast = "false"
+    is_l2_flooding_enabled   = "false"
+    is_layer2_only           = "false"
+    is_this_critical_pool    = "false"
+    is_wireless_pool         = "false"
+    site_name_hierarchy      = data.dnacenter_sda_fabric_site.default.item.0.site_name_hierarchy
+    traffic_type             = "Data"
+    pool_type                = "Extended"
+    virtual_network_name     = "INFRA_VN"
+    vlan_name                = "${var.subarea_name}-EX"
+    vlan_id                  = "1024"
+  }
+}
+
+resource "dnacenter_sda_virtual_network_ip_pool" "campus-pool" {
+  provider = dnacenter
+  depends_on = [ dnacenter_sda_virtual_network.infra_vn, dnacenter_sda_virtual_network.vn_campus, dnacenter_sda_virtual_network.vn_guest, dnacenter_sda_virtual_network_ip_pool.ex-pool ]
   parameters {
 
     auto_generate_vlan_name  = "false"
