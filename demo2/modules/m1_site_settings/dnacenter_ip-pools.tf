@@ -79,7 +79,7 @@ resource "dnacenter_reserve_ip_subpool" "campus-pool" {
     ipv4_prefix_length = 24
     ipv4_subnet        = var.campus-pool_ipv4_subnet
     ipv6_address_space = "false"
-    name               = "${var.subarea_name}-Campus-Pool"
+    name               = "${var.subarea_name}-User-Pool"
     site_id            = dnacenter_site.subarea.item.0.id
     type               = "Generic"
   }

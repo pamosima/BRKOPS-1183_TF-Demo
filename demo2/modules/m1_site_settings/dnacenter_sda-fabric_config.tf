@@ -124,7 +124,7 @@ resource "dnacenter_sda_virtual_network_ip_pool" "campus-pool" {
   parameters {
 
     auto_generate_vlan_name  = "false"
-    ip_pool_name             = "${var.subarea_name}-Campus-Pool"
+    ip_pool_name             = "${var.subarea_name}-User-Pool"
     is_common_pool           = "false"
     is_ip_directed_broadcast = "false"
     is_l2_flooding_enabled   = "false"
@@ -134,7 +134,7 @@ resource "dnacenter_sda_virtual_network_ip_pool" "campus-pool" {
     site_name_hierarchy      = data.dnacenter_sda_fabric_site.default.item.0.site_name_hierarchy
     traffic_type             = "Data"
     virtual_network_name     = var.vn_campus_virtual_network_name
-    vlan_name                = "${var.subarea_name}-Campus"
+    vlan_name                = "${var.subarea_name}-User"
     vlan_id                  = "1021"
   }
 }
