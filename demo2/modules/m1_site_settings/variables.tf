@@ -48,6 +48,10 @@ variable "device_hostname" {}
 variable "device_pid" {}
 variable "device_serial_number" {}
 variable "device_management_ip_address" {}
+variable "p2p_onboarding_ip_address" {}
+variable "p2p_onboarding_gw" {}
+variable "p2p_onboarding_vlan" {}
+variable "uplink_interface_name" {}
 
 variable "authenticate_template_name" {}
 

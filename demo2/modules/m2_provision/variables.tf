@@ -27,3 +27,7 @@ variable "vn_campus_virtual_network_name" {}
 variable "vn_guest_virtual_network_name" {}
 variable "external_as_number" {}
 variable "internal_as_number" {}
+variable  "p2p_infra-vn_vlan" {}
+variable  "p2p_campus-vn_vlan" {}
+variable  "p2p_guest-vn_vlan" {}
+variable "uplink_interface_name" {}

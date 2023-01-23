@@ -53,24 +53,24 @@ resource "dnacenter_sda_fabric_border_device" "fiab-1" {
       external_connectivity_ip_pool_name = "${var.subarea_name}-Transit-Pool"
       external_connectivity_settings {
         external_autonomou_system_number = var.external_as_number
-        interface_name                   = "TenGigabitEthernet1/1/1"
+        interface_name                   = var.uplink_interface_name
         interface_description            = "Uplink"
         l3_handoff {
             virtual_network {
               virtual_network_name = "INFRA_VN"
-              vlan_id              = "3001"
+              vlan_id              = var.p2p_infra-vn_vlan
             }
         }
         l3_handoff {
           virtual_network {
             virtual_network_name = var.vn_campus_virtual_network_name
-            vlan_id              = "3002"
+            vlan_id              = var.p2p_campus-vn_vlan
           }
         }
         l3_handoff {
           virtual_network {
             virtual_network_name = var.vn_guest_virtual_network_name
-            vlan_id              = "3003"
+            vlan_id              = var.p2p_guest-vn_vlan
           }
         }
       }   
