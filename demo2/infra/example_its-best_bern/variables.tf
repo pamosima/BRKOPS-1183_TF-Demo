@@ -68,14 +68,23 @@ variable "device_management_ip_address" {
   default = "10.120.1.1"
 }
 
+variable "p2p_onboarding_ip_address" {
+  type = string
+  default = "10.120.0.2"  
+}
+variable "p2p_onboarding_gw" {
+  type = string
+  default = "10.120.0.1"  
+}
+
 variable "device_pid" {
   type = string
-  default = "C9300-24P"
+  default = "C9300-48UXM"
 }
 
 variable "device_serial_number" {
   type = string
-  default = "FCW2134L0BE"  
+  default = "FCW2146L09N"  
 }
 
 variable  "external_as_number" { 
@@ -86,6 +95,31 @@ variable  "external_as_number" {
 variable  "internal_as_number" { 
   type = number
   default = "65532"
+}
+
+variable "p2p_onboarding_vlan" {
+  type = number
+  default = "30"
+}
+
+variable  "p2p_infra-vn_vlan" { 
+  type = number
+  default = "3011"
+}
+
+variable  "p2p_campus-vn_vlan" { 
+  type = number
+  default = "3012"
+}
+
+variable  "p2p_guest-vn_vlan" { 
+  type = number
+  default = "3013"
+}
+
+variable "uplink_interface_name" {
+  type = string
+  default = "TenGigabitEthernet1/0/48"   
 }
 
 variable "ios_xe_username" {

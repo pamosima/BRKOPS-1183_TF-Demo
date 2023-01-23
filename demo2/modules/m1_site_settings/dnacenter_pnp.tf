@@ -43,6 +43,23 @@ resource "dnacenter_pnp_device_site_claim" "device" {
         key   = "MANAGEMENT_IP_ADDRESS"
         value = var.device_management_ip_address
       }
+      config_parameters {
+        key   = "P2P_ONBOARDING_IP_ADDRESS"
+        value = var.p2p_onboarding_ip_address
+      }     
+      config_parameters {
+        key   = "P2P_ONBOARDING_GW"
+        value = var.p2p_onboarding_gw
+      }
+      config_parameters {
+        key   = "P2P_ONBOARDING_VLAN"
+        value = var.p2p_onboarding_vlan
+      }
+
+      config_parameters {
+        key   = "UPLINK_INTERFACE_NAME"
+        value = var.uplink_interface_name
+      }
     }
   }
 }

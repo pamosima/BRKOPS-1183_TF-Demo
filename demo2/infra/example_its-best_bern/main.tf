@@ -73,6 +73,10 @@ module "m1_site_settings" {
   device_management_ip_address = var.device_management_ip_address
   device_pid = var.device_pid
   device_serial_number = var.device_serial_number
+  p2p_onboarding_ip_address = var.p2p_onboarding_ip_address
+  p2p_onboarding_gw = var.p2p_onboarding_gw
+  uplink_interface_name = var.uplink_interface_name
+  p2p_onboarding_vlan = var.p2p_onboarding_vlan
 
   authenticate_template_name = "Closed Authentication"
 
@@ -94,6 +98,10 @@ module "m1_site_settings" {
 #   device_management_ip_address = var.device_management_ip_address
 #   external_as_number = var.external_as_number
 #   internal_as_number = var.internal_as_number
+#   p2p_infra-vn_vlan = var.p2p_infra-vn_vlan
+#   p2p_campus-vn_vlan = var.p2p_campus-vn_vlan
+#   p2p_guest-vn_vlan = var.p2p_guest-vn_vlan
+#   uplink_interface_name = var.uplink_interface_name
 
 #   vn_campus_virtual_network_name = var.vn_campus_virtual_network_name
 #   vn_guest_virtual_network_name = var.vn_guest_virtual_network_name
