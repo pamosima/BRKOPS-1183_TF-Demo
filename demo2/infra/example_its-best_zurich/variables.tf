@@ -70,11 +70,11 @@ variable "device_management_ip_address" {
 
 variable "p2p_onboarding_ip_address" {
   type = string
-  default = "10.120.0.2"  
+  default = "10.110.0.2"  
 }
 variable "p2p_onboarding_gw" {
   type = string
-  default = "10.120.0.1"  
+  default = "10.110.0.1"  
 }
 
 variable "device_pid" {
@@ -99,7 +99,7 @@ variable  "internal_as_number" {
 
 variable "p2p_onboarding_vlan" {
   type = number
-  default = "30"
+  default = "20"
 }
 
 variable  "p2p_infra-vn_vlan" { 

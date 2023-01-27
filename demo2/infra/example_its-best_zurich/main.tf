@@ -98,7 +98,7 @@ module "m1_site_settings" {
 #   device_management_ip_address = var.device_management_ip_address
 #   external_as_number = var.external_as_number
 #   internal_as_number = var.internal_as_number
-#   p2p_infra-vn_vlan = var.2p_infra-vn_vlan
+#   p2p_infra-vn_vlan = var.p2p_infra-vn_vlan
 #   p2p_campus-vn_vlan = var.p2p_campus-vn_vlan
 #   p2p_guest-vn_vlan = var.p2p_guest-vn_vlan
 #   uplink_interface_name = var.uplink_interface_name
