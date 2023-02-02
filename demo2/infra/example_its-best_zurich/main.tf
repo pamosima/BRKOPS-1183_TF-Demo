@@ -109,7 +109,7 @@ module "m1_site_settings" {
 
 # module "m3_testing" {
 #   # Using m3_testing module to deploy TE-Agent
-#   depends_on = [ module.m2_provisioning ]
+#   depends_on = [ module.m2_provision ]
 #   source = "../../modules/m3_testing"
 
 #   device_management_ip_address = var.device_management_ip_address
