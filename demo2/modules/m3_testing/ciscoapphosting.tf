@@ -17,11 +17,12 @@ resource "ciscoapphosting_iox" "iox" {
   host                 = var.device_management_ip_address
   enable               = true
 }
-
+resource "time_sleep" "wait4iox" {
+  depends_on      = [ciscoapphosting_iox.iox]
+  create_duration = "60s"
+}
 resource "ciscoapphosting_app" "thousandeyes" {
-  depends_on = [
-    ciscoapphosting_iox.iox
-  ]
+  depends_on = [time_sleep.wait4iox]
   host                 = var.device_management_ip_address
   name                 = "thousandeyes"
   image                = "http://192.168.99.103/thousandeyes-enterprise-agent-4.2.2.cisco.tar"
@@ -33,7 +34,7 @@ resource "ciscoapphosting_app" "thousandeyes" {
   }
 }
 
-resource "time_sleep" "wait" {
+resource "time_sleep" "wait4agent" {
   depends_on      = [ciscoapphosting_app.thousandeyes]
   create_duration = "240s"
 }

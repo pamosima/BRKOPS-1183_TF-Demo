@@ -14,7 +14,7 @@
 # or implied.
 
 data "thousandeyes_agent" "catalyst9k" {
-  depends_on = [time_sleep.wait]
+  depends_on = [time_sleep.wait4agent]
   agent_name = ciscoapphosting_app.thousandeyes.hostname
 }
 
