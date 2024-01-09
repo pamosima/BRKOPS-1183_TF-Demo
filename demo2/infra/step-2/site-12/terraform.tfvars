@@ -31,7 +31,7 @@ device_pid= "C9KV-UADP-8P"
 device_serial_number= "CML12SW1"
 
 external_as_number = "65532"
-internal_as_number= "65532"
+internal_as_number= "65522"
 
 ios_xe_username = ""
 ios_xe_password = ""
