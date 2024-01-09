@@ -1,3 +1,4 @@
+
 # Copyright (c) 2021 Cisco and/or its affiliates.
 
 # This software is licensed to you under the terms of the Cisco Sample
@@ -13,15 +14,12 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
-resource "dnacenter_site" "area" {
-  provider = dnacenter
-  parameters {
-    site {
-      area {
-        name = var.area_name
-        parent_name = var.area_parent_name
-      }
-    }
-  type = "area"
-  }
-}
+variable "dnac_url" {}
+variable "dnac_username" {}
+variable "dnac_password" {}
+
+variable "area_name" {}
+variable "area_parent_name" {}
+variable "subarea_name" {}
+variable "building_name" {}
+variable "building_address" {}

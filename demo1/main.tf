@@ -23,13 +23,13 @@ provider "dnacenter" {
     ssl_verify = "false"
 }
 
-resource "dnacenter_site" "area_a" {
+resource "dnacenter_area" "area_a" {
   provider = dnacenter
   parameters {
     site {
       area {
         name = "Area A"
-        parent_name = var.parent_name
+        parent_name = var.area_parent_name
       }
     }
   type = "area"

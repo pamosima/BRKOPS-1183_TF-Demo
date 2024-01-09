@@ -20,107 +20,48 @@ variable "dnac_url" {}
 
 variable "area_parent_name" {
   type = string
-  default = "Global/Terraform/Demo2"
 }
 
 variable "area_name" {
   type = string
-  default = "ITs-Best"
 }
 
 variable "subarea_name" {
   type = string
-  default = "ITB_Bern"
 }
 
 variable "building_name" {
-  type = string
-  default = "BE-1"  
+  type = string 
 }
 
 variable "building_address" {
   type = string
-  default = "Morgenstrasse 129, 3018 Bern, Switzerland"  
 }
 
-variable "ip_pool_prefix" { 
+variable "site_id" {
   type = string
-  default = "10.120."
-}
-
-variable "vn_campus_virtual_network_name" {
-  type = string
-  default = "ITB_Campus"
-}
-
-variable "vn_guest_virtual_network_name" {
-  type = string
-  default = "ITB_Guest"
 }
 
 variable "device_hostname" {
   type = string
-  default = "be-fiab-1"
-}
-
-variable "device_management_ip_address" {
-  type = string
-  default = "10.120.1.1"
-}
-
-variable "p2p_onboarding_ip_address" {
-  type = string
-  default = "10.120.0.2"  
-}
-variable "p2p_onboarding_gw" {
-  type = string
-  default = "10.120.0.1"  
 }
 
 variable "device_pid" {
   type = string
-  default = "C9300-48UXM"
 }
 
 variable "device_serial_number" {
   type = string
-  default = "FCW2146L09N"  
 }
 
 variable  "external_as_number" { 
   type = number
-  default = "65533"
 }
 
 variable  "internal_as_number" { 
   type = number
-  default = "65532"
 }
 
-variable "p2p_onboarding_vlan" {
-  type = number
-  default = "30"
-}
-
-variable  "p2p_infra-vn_vlan" { 
-  type = number
-  default = "3011"
-}
-
-variable  "p2p_campus-vn_vlan" { 
-  type = number
-  default = "3012"
-}
-
-variable  "p2p_guest-vn_vlan" { 
-  type = number
-  default = "3013"
-}
-
-variable "uplink_interface_name" {
-  type = string
-  default = "TenGigabitEthernet1/0/48"   
-}
 
 variable "ios_xe_username" {
   type        = string

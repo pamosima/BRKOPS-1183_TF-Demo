@@ -43,7 +43,6 @@ module "m1_site_settings" {
   area_name = var.area_name  
   area_parent_name = var.area_parent_name
   subarea_name = var.subarea_name
-  global_ip_pool_cidr = "${var.ip_pool_prefix}0.0/16"
   building_name = var.building_name
   building_address = var.building_address
   floor_name = "${var.building_name}-1"
@@ -51,37 +50,25 @@ module "m1_site_settings" {
   floor_width = "100"
   floor_height = "100"
   floor_rf_model = "Cubes And Walled Offices"
+
+  site_id = var.site_id
   
-  ap-pool_ipv4_subnet = "${var.ip_pool_prefix}255.0"
-  ap-pool_ipv4_gate_way = "${var.ip_pool_prefix}255.1"
-  ex-pool_ipv4_subnet = "${var.ip_pool_prefix}255.128"
-  ex-pool_ipv4_gate_way = "${var.ip_pool_prefix}255.129"
-  guest-pool_ipv4_subnet = "${var.ip_pool_prefix}120.0"
-  guest-pool_ipv4_gate_way = "${var.ip_pool_prefix}120.1"
-  campus-pool_ipv4_subnet = "${var.ip_pool_prefix}100.0"
-  campus-pool_ipv4_gate_way = "${var.ip_pool_prefix}100.1"
-  lan-auto-pool_ipv4_subnet = "${var.ip_pool_prefix}254.128"
-  lan-auto-pool_ipv4_gate_way = "${var.ip_pool_prefix}254.129"
-  transit-pool_ipv4_subnet = "${var.ip_pool_prefix}254.0"
-  transit-pool_ipv4_gate_way = "${var.ip_pool_prefix}254.1"
+  global_ip_prefix = "172.16.0.0"
+  global_ip_prefix_length = "12"
   ipv4_dhcp_servers = ["100.127.0.2"]
   ipv4_dns_servers = ["192.168.99.111", "192.168.99.112"]
 
-  pnp_template_tags = ["${var.area_name}"]
   device_name = var.device_hostname
   device_hostname = var.device_hostname
-  device_management_ip_address = var.device_management_ip_address
   device_pid = var.device_pid
   device_serial_number = var.device_serial_number
-  p2p_onboarding_ip_address = var.p2p_onboarding_ip_address
-  p2p_onboarding_gw = var.p2p_onboarding_gw
-  uplink_interface_name = var.uplink_interface_name
-  p2p_onboarding_vlan = var.p2p_onboarding_vlan
 
-  authenticate_template_name = "Closed Authentication"
+  uplink_interface_name = "GigabitEthernet1/0/1"
 
-  vn_campus_virtual_network_name = var.vn_campus_virtual_network_name
-  vn_guest_virtual_network_name = var.vn_guest_virtual_network_name
+  authenticate_template_name = "No Authentication"
+
+  vn_campus_virtual_network_name = "Campus_VN"
+  vn_guest_virtual_network_name = "Guest_VN"
 }
 
 # module "m2_provision" {
@@ -95,21 +82,20 @@ module "m1_site_settings" {
 #   building_name = var.building_name
 
 #   device_hostname = var.device_hostname
-#   device_management_ip_address = var.device_management_ip_address
 #   external_as_number = var.external_as_number
 #   internal_as_number = var.internal_as_number
-#   p2p_infra-vn_vlan = var.p2p_infra-vn_vlan
-#   p2p_campus-vn_vlan = var.p2p_campus-vn_vlan
-#   p2p_guest-vn_vlan = var.p2p_guest-vn_vlan
-#   uplink_interface_name = var.uplink_interface_name
+#   p2p_infra-vn_vlan = "3${var.site_id}1"
+#   p2p_campus-vn_vlan = "3${var.site_id}2"
+#   p2p_guest-vn_vlan = "3${var.site_id}3"
+#   uplink_interface_name = "GigabitEthernet1/0/1"
 
-#   vn_campus_virtual_network_name = var.vn_campus_virtual_network_name
-#   vn_guest_virtual_network_name = var.vn_guest_virtual_network_name
+#   vn_campus_virtual_network_name = "Campus_VN"
+#   vn_guest_virtual_network_name = "Guest_VN"
 # }
 
 # module "m3_testing" {
 #   # Using m3_testing module to deploy TE-Agent
-#   depends_on = [ module.m2_provisioning ]
+#   depends_on = [ module.m2_provision ]
 #   source = "../../modules/m3_testing"
 
 #   device_management_ip_address = var.device_management_ip_address

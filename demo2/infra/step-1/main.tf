@@ -14,19 +14,27 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
+# Declare required provider
 
-variable "area_parent_name" {}
-variable "area_name" {}
-variable "subarea_name" {}
-variable "building_name" {}
+provider "dnacenter" {
 
-variable "device_hostname" {}
+    username = var.dnac_username
+    password = var.dnac_password
+    base_url = var.dnac_url
+    debug = "true"
+    ssl_verify = "false"
+}
 
-variable "vn_campus_virtual_network_name" {}
-variable "vn_guest_virtual_network_name" {}
-variable "external_as_number" {}
-variable "internal_as_number" {}
-variable "p2p_infra-vn_vlan" {}
-variable "p2p_campus-vn_vlan" {}
-variable "p2p_guest-vn_vlan" {}
-variable "uplink_interface_name" {}
+module "m0_general_settings" {
+  # Using m0_general_settings module to configure general settings
+  source = "../../modules/m0_general_settings"
+
+  area_name = var.area_name  
+  area_parent_name = var.area_parent_name
+  subarea_name = var.subarea_name
+  building_name = var.building_name
+  building_address = var.building_address
+  
+  vn_campus_virtual_network_name = "Campus_VN"
+  vn_guest_virtual_network_name = "Guest_VN"
+}

@@ -13,12 +13,26 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
-resource "dnacenter_area" "subarea" {
+resource "dnacenter_area" "area" {
   provider = dnacenter
   parameters {
     site {
       area {
-        name = var.subarea_name
+        name        = var.area_name
+        parent_name = var.area_parent_name
+      }
+    }
+  type = "area"
+  }
+}
+
+resource "dnacenter_area" "subarea" {
+  depends_on  = [ dnacenter_area.area ]
+  provider    = dnacenter
+  parameters {
+    site {
+      area {
+        name        = var.subarea_name
         parent_name = "${var.area_parent_name}/${var.area_name}"
       }
     }
@@ -28,34 +42,16 @@ resource "dnacenter_area" "subarea" {
 
 
 resource "dnacenter_building" "building" {
-  depends_on = [ dnacenter_area.subarea ]
-  provider = dnacenter
+  depends_on  = [ dnacenter_area.subarea ]
+  provider    = dnacenter
   parameters {
     site {
       building {
-        name = var.building_name
+        name        = var.building_name
         parent_name = dnacenter_area.subarea.item.0.site_name_hierarchy
-        address = var.building_address
+        address     = var.building_address
       }
     }
   type = "building"
-  }
-}
-
-resource "dnacenter_floor" "floor" {
-  depends_on = [ dnacenter_building.building ]
-  provider = dnacenter
-  parameters {
-    site {
-      floor {
-        name = var.floor_name
-        parent_name = dnacenter_building.building.item.0.site_name_hierarchy
-        rf_model = var.floor_rf_model
-        height = var.floor_height
-        length = var.floor_length
-        width = var.floor_width
-      }
-    }
-  type = "floor"
   }
 }

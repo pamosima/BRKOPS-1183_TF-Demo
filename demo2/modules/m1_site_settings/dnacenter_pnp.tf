@@ -23,16 +23,24 @@ data "dnacenter_configuration_template" "pnp_template" {
 
 data "dnacenter_pnp_device" "device" {
   provider           = dnacenter
-  serial_number    = [ var.device_serial_number ]
+  serial_number      = [ var.device_serial_number ]
+}
+
+data "dnacenter_site" "building" {
+  provider = dnacenter
+  name = "${dnacenter_building.building.parameters.0.site.0.building.0.parent_name}/${dnacenter_building.building.parameters.0.site.0.building.0.name}"
 }
 
 resource "dnacenter_pnp_device_site_claim" "device" {
-  provider = dnacenter
+  provider          = dnacenter
   parameters {
-    device_id = data.dnacenter_pnp_device.device.items.0.id
-    site_id   = dnacenter_site.building.item.0.id
-    hostname  = var.device_hostname
-    type      = "Default"
+    device_id       = data.dnacenter_pnp_device.device.items.0.id
+    site_id         = data.dnacenter_site.building.items.0.id
+    type            = "Default"
+    image_info {
+      image_id = ""
+      skip     = "true"
+    }
     config_info {
       config_id = data.dnacenter_configuration_template.pnp_template.items.0.template_id
       config_parameters {
@@ -41,25 +49,25 @@ resource "dnacenter_pnp_device_site_claim" "device" {
       }
       config_parameters {
         key   = "MANAGEMENT_IP_ADDRESS"
-        value = var.device_management_ip_address
+        value = "172.31.${var.site_id}.1"
       }
       config_parameters {
         key   = "P2P_ONBOARDING_IP_ADDRESS"
-        value = var.p2p_onboarding_ip_address
+        value = "172.20.${var.site_id}.2"
       }     
       config_parameters {
         key   = "P2P_ONBOARDING_GW"
-        value = var.p2p_onboarding_gw
+        value = "172.20.${var.site_id}.1"
       }
       config_parameters {
         key   = "P2P_ONBOARDING_VLAN"
-        value = var.p2p_onboarding_vlan
+        value = "20"
       }
 
       config_parameters {
         key   = "UPLINK_INTERFACE_NAME"
         value = var.uplink_interface_name
-      }
+      }      
     }
   }
 }

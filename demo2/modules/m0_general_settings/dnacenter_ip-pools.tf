@@ -1,4 +1,3 @@
-
 # Copyright (c) 2021 Cisco and/or its affiliates.
 
 # This software is licensed to you under the terms of the Cisco Sample
@@ -14,19 +13,17 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
+resource "dnacenter_global_pool" "default" {
+  provider = dnacenter
+  parameters {
+    settings {
+      ippool {
 
-variable "area_parent_name" {}
-variable "area_name" {}
-variable "subarea_name" {}
-variable "building_name" {}
-
-variable "device_hostname" {}
-
-variable "vn_campus_virtual_network_name" {}
-variable "vn_guest_virtual_network_name" {}
-variable "external_as_number" {}
-variable "internal_as_number" {}
-variable "p2p_infra-vn_vlan" {}
-variable "p2p_campus-vn_vlan" {}
-variable "p2p_guest-vn_vlan" {}
-variable "uplink_interface_name" {}
+        ip_address_space = "IPv4"
+        ip_pool_cidr     = "172.16.0.0/12"
+        ip_pool_name     = "Global_IP-Pool"
+        type             = "Generic"
+      }
+    }
+  }
+}

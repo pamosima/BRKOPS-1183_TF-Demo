@@ -14,19 +14,27 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
+dnac_username = ""
+dnac_password = ""
+dnac_url = "https://198.18.129.100"
 
-variable "area_parent_name" {}
-variable "area_name" {}
-variable "subarea_name" {}
-variable "building_name" {}
+area_parent_name = "Global/BRKOPS-1183"
+area_name= "Demo2"
+subarea_name= "Site-11"
+building_name= "11-1"  
+building_address= "Richtistrasse 7, 8304 Wallisellen, Switzerland"
 
-variable "device_hostname" {}
+site_id = "11"
 
-variable "vn_campus_virtual_network_name" {}
-variable "vn_guest_virtual_network_name" {}
-variable "external_as_number" {}
-variable "internal_as_number" {}
-variable "p2p_infra-vn_vlan" {}
-variable "p2p_campus-vn_vlan" {}
-variable "p2p_guest-vn_vlan" {}
-variable "uplink_interface_name" {}
+device_hostname= "site-11-switch-1"
+device_pid= "C9KV-UADP-8P"
+device_serial_number= "CML11SW1"
+
+external_as_number = "65535"
+internal_as_number= "65534"
+
+ios_xe_username = ""
+ios_xe_password = ""
+
+te_agent_token =""
+te_token =""

@@ -26,31 +26,18 @@ variable "floor_width" {}
 variable "floor_height" {}
 variable "floor_rf_model" {}
 
-variable "global_ip_pool_cidr" {}
-variable "ap-pool_ipv4_subnet" {}
-variable "ap-pool_ipv4_gate_way" {}
-variable "ex-pool_ipv4_subnet" {}
-variable "ex-pool_ipv4_gate_way" {}
-variable "campus-pool_ipv4_subnet" {}
-variable "campus-pool_ipv4_gate_way" {}
-variable "guest-pool_ipv4_subnet" {}
-variable "guest-pool_ipv4_gate_way" {}
-variable "transit-pool_ipv4_subnet" {}
-variable "transit-pool_ipv4_gate_way" {}
-variable "lan-auto-pool_ipv4_subnet" {}
-variable "lan-auto-pool_ipv4_gate_way" {}
+variable "site_id" {}
+
+variable "global_ip_prefix" {}
+variable "global_ip_prefix_length" {}
 variable "ipv4_dns_servers" {}
 variable "ipv4_dhcp_servers" {}
 
-variable "pnp_template_tags" {}
 variable "device_name" {}
 variable "device_hostname" {}
 variable "device_pid" {}
 variable "device_serial_number" {}
-variable "device_management_ip_address" {}
-variable "p2p_onboarding_ip_address" {}
-variable "p2p_onboarding_gw" {}
-variable "p2p_onboarding_vlan" {}
+
 variable "uplink_interface_name" {}
 
 variable "authenticate_template_name" {}

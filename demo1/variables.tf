@@ -18,7 +18,6 @@ variable "dnac_url" {}
 variable "dnac_username" {}
 variable "dnac_password" {}
 
-variable "parent_name" {
+variable "area_parent_name" {
   type = string
-  default = "Global/Terraform/Demo1"
 }

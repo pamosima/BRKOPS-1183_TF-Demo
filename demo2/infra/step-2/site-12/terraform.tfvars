@@ -14,19 +14,27 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
+dnac_username = ""
+dnac_password = ""
+dnac_url = "https://198.18.129.100"
 
-variable "area_parent_name" {}
-variable "area_name" {}
-variable "subarea_name" {}
-variable "building_name" {}
+area_parent_name = "Global/BRKOPS-1183"
+area_name= "Demo2"
+subarea_name= "Site-12"
+building_name= "12-1"  
+building_address= "Morgenstrasse 129, 3018 Bern, Switzerland"
 
-variable "device_hostname" {}
+site_id = "12"
 
-variable "vn_campus_virtual_network_name" {}
-variable "vn_guest_virtual_network_name" {}
-variable "external_as_number" {}
-variable "internal_as_number" {}
-variable "p2p_infra-vn_vlan" {}
-variable "p2p_campus-vn_vlan" {}
-variable "p2p_guest-vn_vlan" {}
-variable "uplink_interface_name" {}
+device_hostname= "site-12-switch-1"
+device_pid= "C9KV-UADP-8P"
+device_serial_number= "CML12SW1"
+
+external_as_number = "65532"
+internal_as_number= "65532"
+
+ios_xe_username = ""
+ios_xe_password = ""
+
+te_agent_token =""
+te_token =""

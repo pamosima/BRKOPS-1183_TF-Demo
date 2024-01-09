@@ -14,24 +14,12 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
-# Declare required provider
+dnac_username = "user1"
+dnac_password = "C1sco12345"
+dnac_url = "https://198.18.129.100"
 
-provider "dnacenter" {
-
-    username = var.dnac_username
-    password = var.dnac_password
-    base_url = var.dnac_url
-    debug = "true"
-    ssl_verify = "false"
-}
-
-module "m0_general_settings" {
-  # Using m0_general_settings module to configure general settings
-  source = "../../modules/m0_general_settings"
-
-  area_name = var.area_name  
-  area_parent_name = var.area_parent_name
-  
-  vn_campus_virtual_network_name = var.vn_campus_virtual_network_name
-  vn_guest_virtual_network_name = var.vn_guest_virtual_network_name
-}
+area_parent_name = "Global/BRKOPS-1183"
+area_name= "Demo2"
+subarea_name= "Site-200"
+building_name= "200-1"  
+building_address= "Richtistrasse 7, 8304 Wallisellen, Switzerland"   

@@ -14,26 +14,8 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
-variable "dnac_url" {}
-variable "dnac_username" {}
-variable "dnac_password" {}
+dnac_username = "user1"
+dnac_password = "C1sco12345"
+dnac_url = "https://198.18.129.100"
 
-variable "area_name" {
-  type = string
-  default = "ITs-Best"
-}
-
-variable "area_parent_name" {
-  type = string
-  default = "Global/Terraform/Demo2"
-}
-
-variable "vn_campus_virtual_network_name" {
-  type = string
-  default = "ITB_Campus"
-}
-
-variable "vn_guest_virtual_network_name" {
-  type = string
-  default = "ITB_Guest"
-}
+area_parent_name = "Global/BRKOPS-1183/Demo1"

@@ -18,7 +18,6 @@ resource "dnacenter_sda_virtual_network_v2" "vn_campus" {
   parameters {
 
     is_guest_virtual_network = "false"
-    scalable_group_names     = ["Employees"]
     virtual_network_name     = var.vn_campus_virtual_network_name
   }
 }
@@ -28,7 +27,6 @@ resource "dnacenter_sda_virtual_network_v2" "vn_guest" {
   parameters {
 
     is_guest_virtual_network = "false"
-    scalable_group_names     = ["GUEST_Default"]
     virtual_network_name     = var.vn_guest_virtual_network_name
   }
 }

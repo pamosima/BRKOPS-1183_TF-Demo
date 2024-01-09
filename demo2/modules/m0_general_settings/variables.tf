@@ -14,9 +14,11 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
-
 variable "area_name" {}
 variable "area_parent_name" {}
+variable "subarea_name" {}
+variable "building_name" {}
+variable "building_address" {}
 
 variable "vn_campus_virtual_network_name" {}
 variable "vn_guest_virtual_network_name" {}
