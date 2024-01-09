@@ -26,7 +26,7 @@ resource "dnacenter_sda_provision_device" "fiab-1" {
   provider = dnacenter
   parameters {
 
-    device_management_ip_address = data.dnacenter_network_device_list.device.management_ip_address
+    device_management_ip_address = "172.31.${var.site_id}.1"
     site_name_hierarchy          = "${var.area_parent_name}/${var.area_name}/${var.subarea_name}/${var.building_name}"
   }
 }
@@ -49,7 +49,7 @@ resource "dnacenter_sda_fabric_border_device" "fiab-1" {
   depends_on = [ dnacenter_sda_provision_device.fiab-1, dnacenter_transit_peer_network.ip-transit ]
   parameters {
     payload {
-      device_management_ip_address       = data.dnacenter_network_device_list.device.management_ip_address
+      device_management_ip_address       = "172.31.${var.site_id}.1"
       device_role                        = ["Border_Node", "Control_Plane_Node", "Edge_Node"]
       border_session_type                = "EXTERNAL"
       border_with_external_connectivity  = "true"
