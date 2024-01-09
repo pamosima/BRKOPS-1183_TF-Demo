@@ -71,3 +71,12 @@ resource "dnacenter_pnp_device_site_claim" "device" {
     }
   }
 }
+
+data "external" "onboarding_state" {
+  depends_on = [ dnacenter_pnp_device_site_claim.device ]
+  program = ["python3", "dnac_state.py"]
+
+  query = {
+    serial_number = var.device_serial_number
+  }
+}
