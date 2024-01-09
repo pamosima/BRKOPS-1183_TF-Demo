@@ -71,27 +71,29 @@ module "m1_site_settings" {
   vn_guest_virtual_network_name = "Guest_VN"
 }
 
-# module "m2_provision" {
-#   # Using m2_provision module to provision FiAB
-#   depends_on = [ module.m1_site_settings ]
-#   source = "../../modules/m2_provision"
+module "m2_provision" {
+  # Using m2_provision module to provision FiAB
+  depends_on = [ module.m1_site_settings ]
+  source = "../../modules/m2_provision"
 
-#   area_name = var.area_name  
-#   area_parent_name = var.area_parent_name
-#   subarea_name = var.subarea_name
-#   building_name = var.building_name
+  area_name = var.area_name  
+  area_parent_name = var.area_parent_name
+  subarea_name = var.subarea_name
+  building_name = var.building_name
 
-#   device_hostname = var.device_hostname
-#   external_as_number = var.external_as_number
-#   internal_as_number = var.internal_as_number
-#   p2p_infra-vn_vlan = "3${var.site_id}1"
-#   p2p_campus-vn_vlan = "3${var.site_id}2"
-#   p2p_guest-vn_vlan = "3${var.site_id}3"
-#   uplink_interface_name = "GigabitEthernet1/0/1"
+  site_id = var.site_id
 
-#   vn_campus_virtual_network_name = "Campus_VN"
-#   vn_guest_virtual_network_name = "Guest_VN"
-# }
+  device_hostname = var.device_hostname
+  external_as_number = var.external_as_number
+  internal_as_number = var.internal_as_number
+  p2p_infra-vn_vlan = "3${var.site_id}1"
+  p2p_campus-vn_vlan = "3${var.site_id}2"
+  p2p_guest-vn_vlan = "3${var.site_id}3"
+  uplink_interface_name = "GigabitEthernet1/0/1"
+
+  vn_campus_virtual_network_name = "Campus_VN"
+  vn_guest_virtual_network_name = "Guest_VN"
+}
 
 # module "m3_testing" {
 #   # Using m3_testing module to deploy TE-Agent
