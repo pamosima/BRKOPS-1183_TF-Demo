@@ -13,6 +13,13 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
+data "external" "inventory_state" {
+  program = ["python3", "dnac_inventory-state.py"]
+
+  query = {
+    ip_address = "172.31.${var.site_id}.1"
+  }
+}
 data "dnacenter_network_device_list" "device" {
   provider           = dnacenter
   hostname           = ["${var.device_hostname}.*"]
@@ -23,6 +30,7 @@ data "dnacenter_sda_fabric_site" "default" {
 }
 
 resource "dnacenter_sda_provision_device" "fiab-1" {
+  depends_on = [ data.external.inventory_state ]
   provider = dnacenter
   parameters {
 
