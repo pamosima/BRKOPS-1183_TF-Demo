@@ -17,7 +17,7 @@
 data "dnacenter_configuration_template" "pnp_template" {
   provider       = dnacenter
   latest_version = "false"
-  software_version = "17.6.1"
+  software_version = "17.9.1"
   un_committed     = "true"
 }
 
@@ -74,7 +74,7 @@ resource "dnacenter_pnp_device_site_claim" "device" {
 
 data "external" "onboarding_state" {
   depends_on = [ dnacenter_pnp_device_site_claim.device ]
-  program = ["python3", "dnac_state.py"]
+  program = ["python3", "dnac_pnp-state.py"]
 
   query = {
     serial_number = var.device_serial_number

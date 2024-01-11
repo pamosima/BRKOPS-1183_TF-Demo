@@ -26,7 +26,7 @@ resource "dnacenter_configuration_template" "fiab" {
     version = "2.0"
     project_id   = data.dnacenter_projects_details.onboarding.item.0.id
     software_type    = "IOS"
-    software_version = "17.6.1"
+    software_version = "17.9.1"
     device_types {
       product_family = "Switches and Hubs"
     }
