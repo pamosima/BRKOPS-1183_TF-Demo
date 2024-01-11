@@ -135,7 +135,7 @@ resource "dnacenter_sda_virtual_network_ip_pool" "campus-pool" {
 
 resource "dnacenter_sda_virtual_network_ip_pool" "guest-pool" {
   provider = dnacenter
-  depends_on = [ dnacenter_sda_virtual_network.infra_vn, dnacenter_sda_virtual_network.vn_campus, dnacenter_sda_virtual_network.vn_guest, dnacenter_sda_virtual_network_ip_pool.campus-pool ]
+  depends_on = [ dnacenter_sda_virtual_network.vn_guest, dnacenter_sda_virtual_network_ip_pool.campus-pool ]
   parameters {
 
     auto_generate_vlan_name  = "false"
