@@ -20,18 +20,18 @@ dnac_url = "https://198.18.129.100"
 
 area_parent_name = "Global/BRKOPS-1183"
 area_name= "Demo2"
-subarea_name= "Site-12"
-building_name= "12-1"  
+subarea_name= "Site-13"
+building_name= "13-1"  
 building_address= "Morgenstrasse 129, 3018 Bern, Switzerland"
 
-site_id = "12"
+site_id = "13"
 
-device_hostname= "site-12-switch-1"
+device_hostname= "site-13-switch-1"
 device_pid= "C9KV-UADP-8P"
-device_serial_number= "CML12SW1"
+device_serial_number= "CML13SW1"
 
-external_as_number = "65532"
-internal_as_number= "65532"
+external_as_number = "65533"
+internal_as_number= "65523"
 
 ios_xe_username = ""
 ios_xe_password = ""
