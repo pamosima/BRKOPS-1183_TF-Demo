@@ -22,6 +22,9 @@ variable "building_name" {}
 
 variable "site_id" {}
 variable "device_hostname" {}
+variable "device_serial_number" {
+  
+}
 
 variable "vn_campus_virtual_network_name" {}
 variable "vn_guest_virtual_network_name" {}
