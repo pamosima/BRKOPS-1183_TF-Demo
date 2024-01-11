@@ -84,6 +84,7 @@ module "m2_provision" {
   site_id = var.site_id
 
   device_hostname = var.device_hostname
+  device_serial_number = var.device_serial_number
   external_as_number = var.external_as_number
   internal_as_number = var.internal_as_number
   p2p_infra-vn_vlan = "3${var.site_id}1"
