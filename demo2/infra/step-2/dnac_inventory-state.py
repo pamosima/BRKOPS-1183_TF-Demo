@@ -7,7 +7,7 @@ from dnacentersdk import api
 
 def main():
     try:
-        dnac = api.DNACenterAPI(base_url="https://198.18.129.100", username="user1",password="C1sco12345", verify=False)
+        dnac = api.DNACenterAPI(base_url="https://198.18.129.100", username="user",password="password", verify=False)
         input = sys.stdin.read()
         input_json = json.loads(input)
         
