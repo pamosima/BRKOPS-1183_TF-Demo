@@ -57,6 +57,7 @@ module "m1_site_settings" {
   global_ip_prefix_length = "12"
   ipv4_dhcp_servers = ["100.127.0.2"]
   ipv4_dns_servers = ["192.168.99.111", "192.168.99.112"]
+  ip_pools = var.ip_pools
 
   device_name = var.device_hostname
   device_hostname = var.device_hostname
