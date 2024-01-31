@@ -12,110 +12,21 @@
 # writing, software distributed under the License is distributed on an "AS
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
-resource "dnacenter_reserve_ip_subpool" "transit-pool" {
+
+resource "dnacenter_reserve_ip_subpool" "pool" {
+  for_each = { for pool in var.ip_pools : pool.name => pool }
   provider = dnacenter
   parameters {
-
     ipv4_dhcp_servers  = var.ipv4_dhcp_servers
     ipv4_dns_servers   = var.ipv4_dns_servers
-    ipv4_gate_way      = "172.16.${var.site_id}.1"
-    ipv4_global_pool   = "${var.global_ip_prefix}/${var.global_ip_prefix_length}"
-    ipv4_prefix        = "true"
-    ipv4_prefix_length = 25
-    ipv4_subnet        = "172.16.${var.site_id}.0"
-    ipv6_address_space = "false"
-    name               = "${var.subarea_name}-Transit-Pool"
-    site_id            = dnacenter_area.subarea.item.0.id
-    type               = "Generic"
-  }
-}
-
-resource "dnacenter_reserve_ip_subpool" "lan-auto-pool" {
-  provider = dnacenter
-  parameters {
-
-    ipv4_dhcp_servers  = var.ipv4_dhcp_servers
-    ipv4_dns_servers   = var.ipv4_dns_servers
-    ipv4_gate_way      = "172.16.${var.site_id}.129"
-    ipv4_global_pool   = "${var.global_ip_prefix}/${var.global_ip_prefix_length}"
-    ipv4_prefix        = "true"
-    ipv4_prefix_length = 25
-    ipv4_subnet        = "172.16.${var.site_id}.128"
-    ipv6_address_space = "false"
-    name               = "${var.subarea_name}-LAN-Auto-Pool"
-    site_id            = dnacenter_area.subarea.item.0.id
-    type               = "LAN"
-  }
-}
-
-resource "dnacenter_reserve_ip_subpool" "campus-pool" {
-  provider = dnacenter
-  parameters {
-
-    ipv4_dhcp_servers  = var.ipv4_dhcp_servers
-    ipv4_dns_servers   = var.ipv4_dns_servers
-    ipv4_gate_way      = "172.21.${var.site_id}.1"
+    ipv4_gate_way      = "172.${each.value.subnet_id}.${var.site_id}.1"
     ipv4_global_pool   = "${var.global_ip_prefix}/${var.global_ip_prefix_length}"
     ipv4_prefix        = "true"
     ipv4_prefix_length = 24
-    ipv4_subnet        = "172.21.${var.site_id}.0"
+    ipv4_subnet        = "172.${each.value.subnet_id}.${var.site_id}.0"
     ipv6_address_space = "false"
-    name               = "${var.subarea_name}-User-Pool"
+    name               = "${var.subarea_name}-${each.value.name}"
     site_id            = dnacenter_area.subarea.item.0.id
-    type               = "Generic"
-  }
-}
-
-resource "dnacenter_reserve_ip_subpool" "guest-pool" {
-  provider = dnacenter
-  parameters {
-
-    ipv4_dhcp_servers  = var.ipv4_dhcp_servers
-    ipv4_dns_servers   = var.ipv4_dns_servers
-    ipv4_gate_way      = "172.22.${var.site_id}.1"
-    ipv4_global_pool   = "${var.global_ip_prefix}/${var.global_ip_prefix_length}"
-    ipv4_prefix        = "true"
-    ipv4_prefix_length = 24
-    ipv4_subnet        = "172.22.${var.site_id}.0"
-    ipv6_address_space = "false"
-    name               = "${var.subarea_name}-Guest-Pool"
-    site_id            = dnacenter_area.subarea.item.0.id
-    type               = "Generic"
-  }
-}
-
-resource "dnacenter_reserve_ip_subpool" "ap-pool" {
-  provider = dnacenter
-  parameters {
-
-    ipv4_dhcp_servers  = var.ipv4_dhcp_servers
-    ipv4_dns_servers   = var.ipv4_dns_servers
-    ipv4_gate_way      = "172.17.${var.site_id}.1"
-    ipv4_global_pool   = "${var.global_ip_prefix}/${var.global_ip_prefix_length}"
-    ipv4_prefix        = "true"
-    ipv4_prefix_length = 25
-    ipv4_subnet        = "172.17.${var.site_id}.0"
-    ipv6_address_space = "false"
-    name               = "${var.subarea_name}-AP-Pool"
-    site_id            = dnacenter_area.subarea.item.0.id
-    type               = "Generic"
-  }
-}
-
-resource "dnacenter_reserve_ip_subpool" "ex-pool" {
-  provider = dnacenter
-  parameters {
-
-    ipv4_dhcp_servers  = var.ipv4_dhcp_servers
-    ipv4_dns_servers   = var.ipv4_dns_servers
-    ipv4_gate_way      = "172.17.${var.site_id}.129"
-    ipv4_global_pool   = "${var.global_ip_prefix}/${var.global_ip_prefix_length}"
-    ipv4_prefix        = "true"
-    ipv4_prefix_length = 25
-    ipv4_subnet        = "172.17.${var.site_id}.128"
-    ipv6_address_space = "false"
-    name               = "${var.subarea_name}-EX-Pool"
-    site_id            = dnacenter_area.subarea.item.0.id
-    type               = "Generic"
+    type               = each.value.type
   }
 }
