@@ -85,5 +85,38 @@ variable "timeout" {
   description = "IOS-XE Client timeout"
 }
 
-variable "te_agent_token" {}
-variable "te_token" {}
+variable "ip_pools" {
+  type = list(map(string))
+  default = [
+    { 
+        name = "Transit-Pool"
+        subnet_id = "16"
+        type = "Generic"
+    },
+    { 
+        name = "LAN-Auto-Pool"
+        subnet_id = "17"
+        type = "LAN"
+    },
+    { 
+        name = "User-Pool"
+        subnet_id = "18"
+        type = "Generic"
+    },
+    { 
+        name = "Guest-Pool"
+        subnet_id = "19"
+        type = "Generic"
+    },
+    { 
+        name = "AP-Pool"
+        subnet_id = "20"
+        type = "Generic"
+    },
+    { 
+        name = "EX-Pool"
+        subnet_id = "21"
+        type = "Generic"
+    }
+  ]
+}
