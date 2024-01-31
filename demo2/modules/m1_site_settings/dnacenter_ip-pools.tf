@@ -25,7 +25,7 @@ resource "dnacenter_reserve_ip_subpool" "pool" {
     ipv4_prefix_length = 24
     ipv4_subnet        = "172.${each.value.subnet_id}.${var.site_id}.0"
     ipv6_address_space = "false"
-    name               = "${var.subarea_name}-${each.value.name}"
+    name               = "Site-${var.site_id}-${each.value.name}"
     site_id            = dnacenter_area.subarea.item.0.id
     type               = each.value.type
   }
