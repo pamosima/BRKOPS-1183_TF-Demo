@@ -32,6 +32,7 @@ variable "global_ip_prefix" {}
 variable "global_ip_prefix_length" {}
 variable "ipv4_dns_servers" {}
 variable "ipv4_dhcp_servers" {}
+variable "ip_pools" {}
 
 variable "device_name" {}
 variable "device_hostname" {}
