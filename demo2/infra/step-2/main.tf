@@ -25,17 +25,6 @@ provider "dnacenter" {
     ssl_verify = "false"
 }
 
-provider "ciscoapphosting" {
-  username = var.ios_xe_username
-  password = var.ios_xe_password
-  insecure = var.insecure
-  timeout  = var.timeout
-}
-
-provider "thousandeyes" {
-  token = var.te_token
-}
-
 module "m1_site_settings" {
   # Using m1_site_settings module to configure site settings
   source = "../../modules/m1_site_settings"

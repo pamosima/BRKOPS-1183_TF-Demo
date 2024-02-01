@@ -14,8 +14,8 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
-dnac_username = ""
-dnac_password = ""
+dnac_username = "user2"
+dnac_password = "C1sco12345"
 dnac_url = "https://198.18.129.100"
 
 area_parent_name = "Global/BRKOPS-1183"
