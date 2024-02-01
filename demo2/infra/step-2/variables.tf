@@ -62,29 +62,6 @@ variable  "internal_as_number" {
   type = number
 }
 
-
-variable "ios_xe_username" {
-  type        = string
-  description = "IOS-XE Username"
-}
-
-variable "ios_xe_password" {
-  type        = string
-  description = "IOS-XE Password"
-}
-
-variable "insecure" {
-  type        = bool
-  default     = true
-  description = "IOS-XE HTTPS insecure"
-}
-
-variable "timeout" {
-  type        = number
-  default     = 120
-  description = "IOS-XE Client timeout"
-}
-
 variable "ip_pools" {
   type = list(map(string))
   default = [

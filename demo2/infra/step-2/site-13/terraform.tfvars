@@ -32,9 +32,3 @@ device_serial_number= "CML13SW1"
 
 external_as_number = "65533"
 internal_as_number= "65523"
-
-ios_xe_username = ""
-ios_xe_password = ""
-
-te_agent_token =""
-te_token =""

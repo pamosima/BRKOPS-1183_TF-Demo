@@ -32,9 +32,3 @@ device_serial_number= "CML15SW1"
 
 external_as_number = "65535"
 internal_as_number= "65525"
-
-ios_xe_username = ""
-ios_xe_password = ""
-
-te_agent_token =""
-te_token =""
