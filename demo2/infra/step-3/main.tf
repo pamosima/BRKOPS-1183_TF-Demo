@@ -14,10 +14,10 @@
 # IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 # or implied.
 
-data "external" "inventory_state" {
+data "external" "pyats_job" {
   program = ["python", "pyats_job.py","${var.testbed}"]
 }
 
 output "pyats_job" {
-  value       = data.external.inventory_state.result
+  value       = data.external.pyats_job.result
 } 
