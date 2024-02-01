@@ -1,0 +1,13 @@
+testbed:
+  credentials:
+    default:
+      username: admin
+      password: C1sco12345
+
+devices:
+  site-14-switch-1:
+    os: iosxe
+    connections:
+      vty:
+        protocol: ssh
+        ip: 172.31.14.1
