@@ -19,5 +19,13 @@ data "external" "pyats_job" {
 }
 
 output "pyats_job" {
-  value       = data.external.pyats_job.result
+  value = data.external.pyats_job.result.exit_code 
+}
+
+resource "null_resource" "dummy" {
+  count = data.external.pyats_job.result.exit_code == "0" ? 1 : 0
+
+  provisioner "local-exec" {
+    command = "echo 'pyATS Job Successfull! Continue with additional resources.'"
+  }
 } 

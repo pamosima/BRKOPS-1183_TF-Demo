@@ -16,7 +16,6 @@ def run_pyats_job(testbed_path, job_script):
         # Prepare JSON response
         response = {
             "exit_code": exit_code_str,
-            "stdout": result.stdout,
             "stderr": result.stderr
         }
 
